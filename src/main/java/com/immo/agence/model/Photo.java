@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Potho")
 public class Photo {
@@ -22,6 +24,7 @@ public class Photo {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "appartement_id")
+	@JsonIgnore
 	private Appartement appartement;
 
 	public Photo() {}

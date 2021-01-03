@@ -13,10 +13,12 @@ public class AppartementService {
 	
 	private AppartementRepository appartementRepository;
 	
+	// Constructeur
 	public AppartementService(AppartementRepository appartementRepository) {
 		this.appartementRepository = appartementRepository;
 	}
-
+	
+///////////////////  Les mothodes pour les web service //////////////////
 	public List<Appartement> findAllAppartements () {
 		return appartementRepository.findAll();
 	}
@@ -34,10 +36,17 @@ public class AppartementService {
 		return appartementRepository.save(appartement);
 	}
 	
+	public Appartement updateAppartement(long idAppart, Appartement appartement) {
+		appartement.setId(idAppart);
+		return appartementRepository.save(appartement);
+	}
+
 	public void deleteAppartement(long idAppart) {
 		appartementRepository.deleteById(idAppart);
 	}
+/////////////////// Fin des mothodes pour les web service //////////////////
 	
+/////////////////// Getters / setters //////////////////
 	public AppartementRepository getAppartementRepository() {
 		return appartementRepository;
 	}
@@ -45,8 +54,5 @@ public class AppartementService {
 	public void setAppartementRepository(AppartementRepository appartementRepository) {
 		this.appartementRepository = appartementRepository;
 	}
-
-	
-
 	
 }

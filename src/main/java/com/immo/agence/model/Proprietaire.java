@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Proprietaire")
 public class Proprietaire {
@@ -25,6 +27,7 @@ public class Proprietaire {
 	private String rib;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "proprietaire")
+	@JsonIgnore
 	private Set<Appartement> appartements;
 
 	public Proprietaire() { }
