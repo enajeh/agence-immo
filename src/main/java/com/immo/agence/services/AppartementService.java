@@ -33,6 +33,12 @@ public class AppartementService {
 	}
 	
 	public Appartement saveAppartement(Appartement appartement) {
+		
+		appartement.getPhotos().forEach(photo -> {
+			appartement.addPhoto(photo);
+		});
+		
+		
 		return appartementRepository.save(appartement);
 	}
 	

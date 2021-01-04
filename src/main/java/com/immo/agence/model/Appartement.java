@@ -32,7 +32,7 @@ public class Appartement {
 	@JoinColumn(name = "proprietaire_id")
 	private Proprietaire proprietaire;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "appartement")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "appartement", orphanRemoval = true)
 	private Set<Photo> photos;
 
 	public Appartement() {}
@@ -50,6 +50,11 @@ public class Appartement {
 		this.photos = photos;
 	}
 
+	public void addPhoto(Photo photo) {
+		photos.add(photo);
+        photo.setAppartement(this);
+    }
+	
 	public long getId() {
 		return id;
 	}
